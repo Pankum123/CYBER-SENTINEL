@@ -1,6 +1,11 @@
 import React from "react";
+import { useAuth } from "../context/AuthProvider";
+import Login from "./Login";
+import Logout from "./Logout";
+import { Link } from "react-router-dom";
 
-function Navbar() {
+function NavBar() {
+  const [authUser, setAuthUser] = useAuth();
   const navItems = (
     <>
       <li>
@@ -12,15 +17,15 @@ function Navbar() {
       <li>
         <a href="contact">Contact</a>
       </li>
-      <li>
+      {/* <li>
         <a href="about">About</a>
-      </li>
+      </li> */}
     </>
   );
 
   return (
     <>
-      <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 dark:bg-slate-900 dark:text-white  fixed top-0 left-0 right-0 z-50 ">
+      <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 dark:bg-slate-800 dark:text-white  fixed top-0 left-0 right-0 z-50 ">
         <div className="navbar">
           <div className="navbar-start">
             <div className="dropdown">
@@ -59,9 +64,24 @@ function Navbar() {
             <div className="navbar-center hidden lg:flex">
               <ul className="menu menu-horizontal px-1">{navItems}</ul>
             </div>
-              <div className=" text-white px-1 py-1 rounded-md">
-                <a className="btn hover:bg-blue-600 duration-300 cursor-pointer">Login</a>
+
+            {authUser ? (
+              <Logout />
+            ) : (
+              <div>
+
+                <div className=" text-white px-1 py-1 rounded-md">
+                  <Link
+                    to="/login"
+                    className="btn hover:bg-blue-600 duration-300 cursor-pointer"
+                  >
+                    Login
+                  </Link>
+            
+                </div>
               </div>
+            )}
+            
           </div>
         </div>
       </div>
@@ -69,5 +89,4 @@ function Navbar() {
   );
 }
 
-
-export default Navbar;
+export default NavBar;
