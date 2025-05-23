@@ -1,8 +1,8 @@
 import React from "react";
 import SearchBox from "./SearchBox";
-import RegionBox from "./RegionBox";
 import SpecificDate from "./SpecificDate";
 import PlatformFilter from "./PlatformFilter";
+import LocationSelector from "./LocationSelector";
 
 function SearchControls() {
   return (
@@ -14,8 +14,8 @@ function SearchControls() {
       </div>
 
       <div>
-        <h1 className="font-bold text-2xl my-4">Region</h1>
-        <RegionBox />
+        {/* <h1 className="font-bold text-2xl my-4">Region</h1> */}
+        <LocationSelector />
       </div>
 
       <div>
