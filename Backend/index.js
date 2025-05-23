@@ -2,11 +2,13 @@ import express from "express"
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors"
+import cookiesParser from "cookie-parser"
 import userRoute from "./routes/user.route.js";
 
 const app = express();
 
 app.use(express.json());
+app.use(cookiesParser());
 app.use(cors());
 
 dotenv.config();
@@ -21,7 +23,7 @@ catch(error){
 console.log("Error : ",error);
 }
 
-app.use("/user",userRoute);
+app.use("/api/user",userRoute);
 
 
 // app.get('/', (req, res) => {
