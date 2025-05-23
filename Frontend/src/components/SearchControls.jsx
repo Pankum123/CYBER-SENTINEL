@@ -4,7 +4,8 @@ import SpecificDate from "./SpecificDate";
 import PlatformFilter from "./PlatformFilter";
 import LocationSelector from "./LocationSelector";
 
-function SearchControls() {
+
+function SearchControls({onSearchClick}) {
   return (
     <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 mt-25 md:flex justify-between">
       <div>
@@ -24,7 +25,10 @@ function SearchControls() {
       </div>
 
       {/* <div>Region</div> */}
-      <button className=" mt-16 h-10 w-20 bg-blue-600  text-white font-bold rounded-md hover:bg-blue-700  cursor-pointer duration-300   ">
+      <button
+        onClick={onSearchClick}
+        className="mt-16 h-10 w-20 bg-blue-600 text-white font-bold rounded-md hover:bg-blue-700 cursor-pointer duration-300"
+      >
         Search
       </button>
  
