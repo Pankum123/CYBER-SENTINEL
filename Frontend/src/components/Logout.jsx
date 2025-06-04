@@ -9,7 +9,7 @@ function Logout() {
   const navigate = useNavigate();
   const handleLogout = async () => {
     await axios
-      .post("/api/user/logout", {})
+      .post("/api/userPolice/logout", {})
       .then((response) => {
         if (response.data) {
           setAuthUser({

@@ -1,4 +1,4 @@
-import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaReddit } from "react-icons/fa";
 
 const PlatformFilter = () => {
   return (
@@ -25,6 +25,12 @@ const PlatformFilter = () => {
         <input type="checkbox"  className="checkbox checkbox-sm checkbox-primary" />
         <FaYoutube className="text-red-600" />
         <span>YouTube</span>
+      </label>
+
+      <label className="flex items-center gap-2">
+        <input type="checkbox"  className="checkbox checkbox-sm checkbox-primary" />
+        <FaReddit className="text-orange-500" />
+        <span>Reddit</span>
       </label>
     </div>
   );

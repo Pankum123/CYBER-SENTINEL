@@ -23,7 +23,7 @@ function Login() {
     // console.log(userInfo);
     await axios
     //   .post("/api/user/login", userInfo) // url -> http://localhost:4002/user/login
-      .post("/api/user/login", userInfo) // url -> http://localhost:4002/user/login
+      .post("/api/userPolice/login", userInfo) // url -> http://localhost:4002/user/login
       .then((response) => {
         if (response.data) {
           toast.success("Login successful");
