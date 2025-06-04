@@ -1,4 +1,4 @@
-import User from "../models/user.model.js";
+import UserPolice from "../models/userPolice.model.js";
 import bcrypt from "bcryptjs";
 import createTokenAndSaveCookie from "../jwt/generateToken.js";
 
@@ -8,7 +8,7 @@ export const signup = async (req, res) => {
     if (password != confirmPassword) {
       return res.status(400).json({ error: "Password do not match" });
     }
-    const user = await User.findOne({ email });
+    const user = await UserPolice.findOne({ email });
     if (user) {
       return res.status(400).json({ error: "User already registered" });
     }
@@ -17,7 +17,7 @@ export const signup = async (req, res) => {
     const str = password.toString(); // Convert integer to string
     const salt = bcrypt.genSaltSync(10); // Generate salt
     const hashPassword = bcrypt.hashSync(str, salt); // Hash the string
-    const newUser = new User({
+    const newUser = new UserPolice({
       fullname,
       email,
       password: hashPassword,
@@ -44,7 +44,7 @@ export const signup = async (req, res) => {
 export const login = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const user = await User.findOne({ email });
+    const user = await UserPolice.findOne({ email });
     console.log("user chechbefore", user);
     if (!user) {
       return res.status(400).json({ error: "Invalid user credential" });

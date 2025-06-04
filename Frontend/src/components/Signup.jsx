@@ -34,7 +34,7 @@ function Signup() {
 
      // .post("/api/user/signup", userInfo) //url ->  http://localhost:6002/user/signup
     await axios
-      .post("/api/user/signup", userInfo) //url ->  http://localhost:6002/user/signup
+      .post("/api/userPolice/signup", userInfo) //url ->  http://localhost:6002/user/signup
       .then((response) => {
         if (response.data) {
           toast.success("Signup successful");

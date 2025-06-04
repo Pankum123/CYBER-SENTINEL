@@ -3,7 +3,15 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors"
 import cookiesParser from "cookie-parser"
-import userRoute from "./routes/user.route.js";
+
+import userPoliceRoute from "./routes/userPolice.route.js";
+
+import platformRoutes from "./routes/platform.route.js";
+import keywordRoutes from "./routes/keyword.route.js";
+import trackedUserRoutes from "./routes/user.route.js";
+import tagRoutes from "./routes/tag.route.js";
+import postRoutes from "./routes/post.route.js";
+
 
 const app = express();
 
@@ -23,12 +31,15 @@ catch(error){
 console.log("Error : ",error);
 }
 
-app.use("/api/user",userRoute);
+// Routes
+app.use("/api/userPolice",userPoliceRoute);
 
+app.use("/platforms",platformRoutes);
+app.use("/keywords",keywordRoutes);
+app.use("/api/users",trackedUserRoutes);
+app.use("/tags",tagRoutes);
+app.use("/api/posts",postRoutes);
 
-// app.get('/', (req, res) => {
-//   res.send('Hello RAMAN PRABHAV')
-// })
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)
