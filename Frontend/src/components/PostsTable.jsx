@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
+import { useKeyword } from "../context/KeywordProvider";
 
 const iconMap = {
   Facebook: <FaFacebook className="text-blue-600" />,
@@ -9,13 +10,14 @@ const iconMap = {
   YouTube: <FaYoutube className="text-red-600" />,
 };
 
-export default function PlatformStatsTable({ keyword }) {
+export default function PlatformStatsTable() {
+  const [keyword] = useKeyword();
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    // if (!keyword) return;
+    if (!keyword) return;
     axios
-      .get("api/posts/platform-stats?keyword=climate")
+      .get(`api/posts/platform-stats?keyword=${keyword}`)
       .then((res) => setData(res.data))
       .catch((err) => console.error("Error fetching platform stats:", err));
   }, [keyword]);
