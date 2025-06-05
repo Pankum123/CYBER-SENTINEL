@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import axios from "axios";
+import { useKeyword } from "../context/KeywordProvider";
 
 const iconMap = {
   facebook: <FaFacebook className="text-blue-600" />,
@@ -9,13 +10,12 @@ const iconMap = {
   youtube: <FaYoutube className="text-red-600" />,
 };
 
-export default function TopUsersCard({ keyword }) {
+export default function TopUsersCard() {
+  const [keyword] = useKeyword();
   const [topUsers, setTopUsers] = useState([]);
-
   useEffect(() => {
-   // const keyword = "climate";
-    // if (!keyword) return;
-    axios.get("/api/posts/top-users?keyword=tech").then((res) => {
+    if (!keyword) return;
+    axios.get(`/api/posts/top-users?keyword=${keyword}`).then((res) => {
       setTopUsers(res.data);
     });
   }, [keyword]);

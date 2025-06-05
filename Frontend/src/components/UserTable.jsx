@@ -1,60 +1,18 @@
 import { FaFacebook, FaTwitter, FaInstagram, FaYoutube} from "react-icons/fa";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
-// const users = [
- 
-//   { name: "user1", posts: 90, date: "04/14/2024",  followers: "18.000", location: "Bihar", icon: <FaFacebook className="text-blue-600" /> },
-//   { name: "user2", posts: 70, date: "04/14/2024",  followers: "12.000", location: "UP", icon: <FaInstagram className="text-pink-500" />},
-//   { name: "user3", posts: 40, date: "04/14/2024",  followers: "50.000", location: "Rajsthan", icon: <FaTwitter className="text-sky-500" />  },
-//   { name: "user4", posts: 20, date: "04/14/2024",  followers: "19.000", location: "California", icon: <FaYoutube className="text-red-600" /> },
- 
-//   { name: "user1", posts: 90, date: "04/14/2024",  followers: "18.000", location: "Bihar", icon: <FaFacebook className="text-blue-600" /> },
-//   { name: "user2", posts: 70, date: "04/14/2024",  followers: "12.000", location: "UP", icon: <FaInstagram className="text-pink-500" />},
-//   { name: "user3", posts: 40, date: "04/14/2024",  followers: "50.000", location: "Rajsthan", icon: <FaTwitter className="text-sky-500" />  },
-//   { name: "user4", posts: 20, date: "04/14/2024",  followers: "19.000", location: "California", icon: <FaYoutube className="text-red-600" /> },
- 
-//   { name: "user1", posts: 90, date: "04/14/2024",  followers: "18.000", location: "Bihar", icon: <FaFacebook className="text-blue-600" /> },
-//   { name: "user2", posts: 70, date: "04/14/2024",  followers: "12.000", location: "UP", icon: <FaInstagram className="text-pink-500" />},
-//   { name: "user3", posts: 40, date: "04/14/2024",  followers: "50.000", location: "Rajsthan", icon: <FaTwitter className="text-sky-500" />  },
-//   { name: "user4", posts: 20, date: "04/14/2024",  followers: "19.000", location: "California", icon: <FaYoutube className="text-red-600" /> },
- 
-//   { name: "user1", posts: 90, date: "04/14/2024",  followers: "18.000", location: "Bihar", icon: <FaFacebook className="text-blue-600" /> },
-//   { name: "user2", posts: 70, date: "04/14/2024",  followers: "12.000", location: "UP", icon: <FaInstagram className="text-pink-500" />},
-//   { name: "user3", posts: 40, date: "04/14/2024",  followers: "50.000", location: "Rajsthan", icon: <FaTwitter className="text-sky-500" />  },
-//   { name: "user4", posts: 20, date: "04/14/2024",  followers: "19.000", location: "California", icon: <FaYoutube className="text-red-600" /> },
- 
-//   { name: "user1", posts: 90, date: "04/14/2024",  followers: "18.000", location: "Bihar", icon: <FaFacebook className="text-blue-600" /> },
-//   { name: "user2", posts: 70, date: "04/14/2024",  followers: "12.000", location: "UP", icon: <FaInstagram className="text-pink-500" />},
-//   { name: "user3", posts: 40, date: "04/14/2024",  followers: "50.000", location: "Rajsthan", icon: <FaTwitter className="text-sky-500" />  },
-//   { name: "user4", posts: 20, date: "04/14/2024",  followers: "19.000", location: "California", icon: <FaYoutube className="text-red-600" /> },
- 
-//   { name: "user1", posts: 90, date: "04/14/2024",  followers: "18.000", location: "Bihar", icon: <FaFacebook className="text-blue-600" /> },
-//   { name: "user2", posts: 70, date: "04/14/2024",  followers: "12.000", location: "UP", icon: <FaInstagram className="text-pink-500" />},
-//   { name: "user3", posts: 40, date: "04/14/2024",  followers: "50.000", location: "Rajsthan", icon: <FaTwitter className="text-sky-500" />  },
-//   { name: "user4", posts: 20, date: "04/14/2024",  followers: "19.000", location: "California", icon: <FaYoutube className="text-red-600" /> },
- 
-//   { name: "user1", posts: 90, date: "04/14/2024",  followers: "18.000", location: "Bihar", icon: <FaFacebook className="text-blue-600" /> },
-//   { name: "user2", posts: 70, date: "04/14/2024",  followers: "12.000", location: "UP", icon: <FaInstagram className="text-pink-500" />},
-//   { name: "user3", posts: 40, date: "04/14/2024",  followers: "50.000", location: "Rajsthan", icon: <FaTwitter className="text-sky-500" />  },
-//   { name: "user4", posts: 20, date: "04/14/2024",  followers: "19.000", location: "California", icon: <FaYoutube className="text-red-600" /> },
- 
-//   { name: "user1", posts: 90, date: "04/14/2024",  followers: "18.000", location: "Bihar", icon: <FaFacebook className="text-blue-600" /> },
-//   { name: "user2", posts: 70, date: "04/14/2024",  followers: "12.000", location: "UP", icon: <FaInstagram className="text-pink-500" />},
-//   { name: "user3", posts: 40, date: "04/14/2024",  followers: "50.000", location: "Rajsthan", icon: <FaTwitter className="text-sky-500" />  },
-//   { name: "user4", posts: 20, date: "04/14/2024",  followers: "19.000", location: "California", icon: <FaYoutube className="text-red-600" /> },
- 
- 
-// ];
+import { useKeyword } from "../context/KeywordProvider";
 
 export default function UserTable() {
+  const [keyword] = useKeyword();
   const [users, setUsers] = useState([]);
   useEffect(() => {
+    if (!keyword) return;
     axios
-      .get("/api/posts?keyword=tech") // adjust keyword dynamically if needed
+      .get(`/api/posts?keyword=${keyword}`) // adjust keyword dynamically if needed
       .then((res) => setUsers(res.data))
       .catch((err) => console.error("Error fetching posts:", err));
-  }, []);
+  }, [keyword]);
 
   return (
     <div className="overflow-x-auto rounded-lg shadow-md h-75 overflow-y-auto">
