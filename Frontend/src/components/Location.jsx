@@ -14,8 +14,10 @@ L.Icon.Default.mergeOptions({
   shadowUrl: markerShadow,
 });
 
-export default function MyMap() {
+export default function Location() {
   return (
+    <div className="bg-gray-100 dark:bg-white rounded-xl shadow mt-2 md:w-160 flex flex-col p-2 items-center justify-center">
+    <h2 className="text-lg text-black font-semibold mb-2">Location </h2>
     <div className="w-full h-[500px] rounded-xl shadow-lg overflow-hidden relative z-0">
       <MapContainer center={[28.6139, 77.2090]} zoom={13} scrollWheelZoom={false} className="w-full h-full">
         <TileLayer
@@ -28,6 +30,7 @@ export default function MyMap() {
           </Popup>
         </Marker>
       </MapContainer>
+    </div>
     </div>
   );
 }

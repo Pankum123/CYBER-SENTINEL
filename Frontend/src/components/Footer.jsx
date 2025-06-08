@@ -2,8 +2,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="mt-36">
-      <hr/>
+    <div className="mt-2">
+     
       <footer className="footer footer-horizontal footer-center  rounded p-10 bg-slate-900 text-white">
         <nav className="grid grid-flow-col gap-4">
           <a className="link link-hover">About us</a>
@@ -55,6 +55,7 @@ const Footer = () => {
           </p>
         </aside>
       </footer>
+    
     </div>
   );
 };
