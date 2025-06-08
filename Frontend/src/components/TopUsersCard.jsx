@@ -11,7 +11,9 @@ const iconMap = {
 };
 
 export default function TopUsersCard() {
-  const [keyword] = useKeyword();
+  const [keyword,setKeyword] = useKeyword();
+  setKeyword("tech");
+  console.log("mere pass aa gaya ", keyword);
   const [topUsers, setTopUsers] = useState([]);
   useEffect(() => {
     if (!keyword) return;
@@ -21,9 +23,9 @@ export default function TopUsersCard() {
   }, [keyword]);
 
   return (
-    <div className="p-4 bg-white rounded-xl shadow-md w-100 max-h-96 overflow-y-auto">
+    <div className="p-3 bg-white rounded-xl shadow-md md:w-97 max-h-96 overflow-y-auto">
       <h3 className="text-lg font-semibold mb-3 text-black">Top Users</h3>
-      <ul className="space-y-3">
+      <ul className="">
         {topUsers.map((user, idx) => (
           <li key={idx} className="flex justify-between items-center">
             <div className="flex items-center space-x-2 text-gray-800">

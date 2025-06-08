@@ -13,9 +13,8 @@ function Logout() {
       .then((response) => {
         if (response.data) {
           setAuthUser({
-            //state ko change karenge
-            ...authUser, // old authUser ye to rahega purana  state ka value rahega hi
-            user: null, //contex per localstorage jo user aa raha hai wahi user
+            ...authUser,
+            user: null,
           });
           localStorage.removeItem("CyberApp");
           toast.success("Logout successful");

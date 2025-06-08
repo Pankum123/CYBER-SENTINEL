@@ -2,10 +2,10 @@ import { FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaReddit } from "react-i
 
 const PlatformFilter = () => {
   return (
-    <div className="flex items-center gap-6 flex-wrap mt-4">
+    <div className=" grid grid-cols-3 items-center gap-6 flex-wrap mt-4">
       <label className="flex items-center gap-2">
         <input type="checkbox"  className="checkbox checkbox-sm checkbox-primary" />
-        <FaFacebook className="text-blue-600" />
+        <FaFacebook className="text-blue-600 " />
         <span>Facebook</span>
       </label>
 

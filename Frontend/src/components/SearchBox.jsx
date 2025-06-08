@@ -14,7 +14,7 @@ function SearchBox() {
 
   return (
     <>
-      <div className="w-130">
+      <div className=" md:w-130">
         {/* Step 3: Prevent form submit refresh */}
         <form onSubmit={(e) => e.preventDefault()}>
           <div>

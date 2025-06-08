@@ -23,9 +23,9 @@ export default function PlatformStatsTable() {
   }, [keyword]);
 
   return (
-    <div className="p-4 bg-white rounded-xl shadow-md w-full">
+    <div className="p-4 bg-white rounded-xl md:w-237  shadow-md overflow-x-auto ">
       <h3 className="text-lg font-semibold mb-3 text-black">Posts by Platform</h3>
-      <table className="min-w-full text-sm text-left">
+      <table className="md:min-w-full text-sm text-left ">
         <thead className="border-b text-gray-700">
           <tr>
             <th className="px-4 py-2 font-semibold">Platform</th>

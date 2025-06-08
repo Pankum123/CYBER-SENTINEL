@@ -1,11 +1,9 @@
 import React from "react";
 import SearchBox from "./SearchBox";
-import SpecificDate from "./SpecificDate";
 import PlatformFilter from "./PlatformFilter";
-import LocationSelector from "./LocationSelector";
+import Region from "./Region";
 
-
-function SearchControls({onSearchClick}) {
+function SearchControls({ onSearchClick }) {
   return (
     <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 mt-25 md:flex justify-between">
       <div>
@@ -15,23 +13,26 @@ function SearchControls({onSearchClick}) {
       </div>
 
       <div>
-        {/* <h1 className="font-bold text-2xl my-4">Region</h1> */}
-        <LocationSelector />
+        <Region />
       </div>
 
-      <div>
-        <h1 className="font-bold text-2xl my-4">Date</h1>
-        <SpecificDate />
-      </div>
+      <div className="flex flex-row justify-between md:flex-col my-3">
+        <div>
+          <h1 className="font-bold text-2xl my-2 m:my-4">Date</h1>
+          <input
+            type="date"
+            className="border-[1px] rounded-lg border-gray-700 px-2 md:px-3 flex items-center grow outline-none w-45 h-11 light:text-black"
+            defaultValue={new Date().toISOString().split("T")[0]}
+          />
+        </div>
 
-      {/* <div>Region</div> */}
-      <button
-        onClick={onSearchClick}
-        className="mt-16 h-10 w-20 bg-blue-600 text-white font-bold rounded-md hover:bg-blue-700 cursor-pointer duration-300"
-      >
-        Search
-      </button>
- 
+        <button
+          onClick={onSearchClick}
+          className=" h-10 w-20 m-10 bg-blue-600 text-white font-bold rounded-md hover:bg-blue-700 cursor-pointer duration-300"
+        >
+          Search
+        </button>
+      </div>
     </div>
   );
 }

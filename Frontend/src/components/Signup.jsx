@@ -60,7 +60,7 @@ function Signup() {
           onSubmit={handleSubmit(onSubmit)}
           className="border border-white bg-white px-6 py-2 rounded-md space-y-3 w-96"
         >
-          <h1 className="text-2xl text-center">
+          <h1 className="text-2xl text-black text-center">
             Tracker<span className="text-green-500 font-semibold">App</span>
           </h1>
           <h2 className="text-xl text-black font-bold">Signup</h2>
