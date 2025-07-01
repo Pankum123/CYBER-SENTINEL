@@ -12,7 +12,6 @@ const iconMap = {
 
 export default function TopUsersCard() {
   const [keyword,setKeyword] = useKeyword();
-  setKeyword("tech");
   console.log("mere pass aa gaya ", keyword);
   const [topUsers, setTopUsers] = useState([]);
   useEffect(() => {

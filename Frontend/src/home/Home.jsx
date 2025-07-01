@@ -8,16 +8,19 @@ import Footer from "../components/Footer";
 function Home() {
   const [show, setShow] = useState(false);
   return (
-    <div>
+
+     <div className="min-h-screen flex flex-col">
       <NavBar />
 
-      <SearchControls onSearchClick={() => setShow(true)} />{" "}
-    
-      {show && <ShowResult />}
+      {/* Main content area grows to fill remaining height */}
+      <div className="flex-grow md:mt-14">
+        <SearchControls onSearchClick={() => setShow(true)} />
+        {show && <ShowResult />}
+      </div>
 
       <Footer />
-      
     </div>
+
   );
 }
 
